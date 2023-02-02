@@ -21,6 +21,7 @@ public class TeacherSummaryDto {
         teacherSummaryDto.setEmail(teacher.getEmail());
         teacherSummaryDto.setPhoneNumber(teacher.getPhoneNumber());
         teacherSummaryDto.setJoiningDate(teacher.getJoiningDate());
+        teacherSummaryDto.setName(teacher.getName());
 
         return teacherSummaryDto;
 

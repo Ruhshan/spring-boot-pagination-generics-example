@@ -10,14 +10,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class GenericPaginatedResponseDto<T, U>{
+public class GenericPaginatedResponseDto<U>{
     private int size;
     private long totalElements;
     private int totalPages;
     private List<U> content;
     private int currentPage;
 
-    public GenericPaginatedResponseDto(Page<T> pageResult, List<U> contents){
+    public <T> GenericPaginatedResponseDto(Page<T> pageResult, List<U> contents){
         this.setSize(pageResult.getSize());
         this.setTotalElements(pageResult.getTotalElements());
         this.setTotalPages(pageResult.getTotalPages());
@@ -25,7 +25,7 @@ public class GenericPaginatedResponseDto<T, U>{
         this.setContent(contents);
     }
 
-    public GenericPaginatedResponseDto<T, U> get(){
+    public GenericPaginatedResponseDto<U> get(){
         return this;
     }
 }

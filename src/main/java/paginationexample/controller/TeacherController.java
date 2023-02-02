@@ -17,7 +17,7 @@ public class TeacherController {
     }
 
     @GetMapping(value = "/teachers/{page}/{size}")
-    GenericPaginatedResponseDto<Teacher, TeacherSummaryDto> getStudentList(@PathVariable("page") int page, @PathVariable("size") int size){
+    GenericPaginatedResponseDto<TeacherSummaryDto> getStudentList(@PathVariable("page") int page, @PathVariable("size") int size){
         return teacherService.getPaginatedList(page, size);
     }
 }
