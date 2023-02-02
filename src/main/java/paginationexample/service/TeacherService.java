@@ -1,7 +1,8 @@
 package paginationexample.service;
 
-import paginationexample.dto.TeacherPaginatedResponseDto;
+import paginationexample.dto.GenericPaginatedResponseDto;
+import paginationexample.entity.Teacher;
 
 public interface TeacherService {
-    TeacherPaginatedResponseDto getPaginatedList(int page, int size);
+    GenericPaginatedResponseDto<Teacher> getPaginatedList(int page, int size);
 }

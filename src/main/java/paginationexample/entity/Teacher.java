@@ -23,4 +23,5 @@ public class Teacher {
     private String joiningDate;
     private String name;
     private String specialization;
+    private String password;
 }

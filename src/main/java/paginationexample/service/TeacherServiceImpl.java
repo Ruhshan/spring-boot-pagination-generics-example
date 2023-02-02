@@ -4,7 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import paginationexample.dto.TeacherPaginatedResponseDto;
+import paginationexample.dto.GenericPaginatedResponseDto;
 import paginationexample.entity.Teacher;
 import paginationexample.repository.TeacherRepository;
 
@@ -17,9 +17,9 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public TeacherPaginatedResponseDto getPaginatedList(int page, int size) {
+    public GenericPaginatedResponseDto<Teacher> getPaginatedList(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Teacher> teacherPage = teacherRepository.findAll(pageable);
-        return new TeacherPaginatedResponseDto(teacherPage).get();
+        return new GenericPaginatedResponseDto<Teacher>(teacherPage).get();
     }
 }
