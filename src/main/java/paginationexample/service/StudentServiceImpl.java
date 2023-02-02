@@ -22,7 +22,6 @@ public class StudentServiceImpl implements StudentService {
     public StudentPaginatedResponseDto getPaginatedList(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Student> studentsPage = studentRepository.findAll(pageable);
-
         return new StudentPaginatedResponseDto(studentsPage).get();
     }
 }
