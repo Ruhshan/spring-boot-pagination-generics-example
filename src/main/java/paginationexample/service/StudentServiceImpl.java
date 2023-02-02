@@ -19,9 +19,9 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public GenericPaginatedResponseDto<Student> getPaginatedList(int page, int size) {
+    public GenericPaginatedResponseDto<Student, Student> getPaginatedList(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Student> studentsPage = studentRepository.findAll(pageable);
-        return new GenericPaginatedResponseDto<Student>(studentsPage).get();
+        return new GenericPaginatedResponseDto<Student, Student>(studentsPage, studentsPage.getContent()).get();
     }
 }

@@ -4,5 +4,5 @@ import paginationexample.dto.GenericPaginatedResponseDto;
 import paginationexample.entity.Student;
 
 public interface StudentService {
-    GenericPaginatedResponseDto<Student> getPaginatedList(int page, int size);
+    GenericPaginatedResponseDto<Student, Student> getPaginatedList(int page, int size);
 }

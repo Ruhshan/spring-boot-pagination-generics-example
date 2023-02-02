@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import paginationexample.dto.GenericPaginatedResponseDto;
+import paginationexample.dto.TeacherSummaryDto;
 import paginationexample.entity.Teacher;
 import paginationexample.service.TeacherService;
 
@@ -16,7 +17,7 @@ public class TeacherController {
     }
 
     @GetMapping(value = "/teachers/{page}/{size}")
-    GenericPaginatedResponseDto<Teacher> getStudentList(@PathVariable("page") int page, @PathVariable("size") int size){
+    GenericPaginatedResponseDto<Teacher, TeacherSummaryDto> getStudentList(@PathVariable("page") int page, @PathVariable("size") int size){
         return teacherService.getPaginatedList(page, size);
     }
 }
