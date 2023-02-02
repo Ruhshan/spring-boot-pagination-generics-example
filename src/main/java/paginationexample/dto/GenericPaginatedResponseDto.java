@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
+import paginationexample.entity.Teacher;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,13 +20,15 @@ public class GenericPaginatedResponseDto<U>{
     private List<U> content;
     private int currentPage;
 
-    public <T> GenericPaginatedResponseDto(Page<T> pageResult, List<U> contents){
+    public <T> GenericPaginatedResponseDto(Page<T> pageResult, Function<T, U> function){
         this.setSize(pageResult.getSize());
         this.setTotalElements(pageResult.getTotalElements());
         this.setTotalPages(pageResult.getTotalPages());
         this.setCurrentPage(pageResult.getPageable().getPageNumber());
-        this.setContent(contents);
+        this.setContent(pageResult.getContent().stream().map(function).collect(Collectors.toList()));
     }
+
+
 
     public GenericPaginatedResponseDto<U> get(){
         return this;

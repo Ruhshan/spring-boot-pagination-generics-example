@@ -27,8 +27,7 @@ public class TeacherServiceImpl implements TeacherService{
     public GenericPaginatedResponseDto<TeacherSummaryDto> getPaginatedList(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Teacher> teacherPage = teacherRepository.findAll(pageable);
-        List<TeacherSummaryDto> teacherSummaryDtos = teacherPage.getContent().stream().map(TeacherSummaryDto::fromEntity).collect(Collectors.toList());
 
-        return new GenericPaginatedResponseDto< TeacherSummaryDto>(teacherPage, teacherSummaryDtos).get();
+        return new GenericPaginatedResponseDto<>(teacherPage, TeacherSummaryDto::fromEntity).get();
     }
 }
